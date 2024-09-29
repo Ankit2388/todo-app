@@ -9,9 +9,9 @@ const NewsListScreen = () => {
     const { addTodo } = useNewsList()
     useEffect(() => {
         const init = async () => {
-            await db.addTask()
+            // await db.addTask()
             const tasks = await db.getAllTasks()
-            // console.log('tasks :::: ', tasks);
+            console.log('tasks :::: ', tasks);
 
         }
         init()

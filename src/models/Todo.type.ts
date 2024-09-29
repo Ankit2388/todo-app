@@ -3,7 +3,7 @@ export interface Todo {
     id: number;
     title: string
     description: string
-    is_completed: boolean
+    is_completed: number
     created_at: string | Date
     updated_at: string | Date
     reminder_date: string | Date

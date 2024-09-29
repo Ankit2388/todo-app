@@ -28,7 +28,7 @@ const useAddTodo = () => {
       await db.addTask({
         title: values.title,
         description: values.description,
-        is_completed: false,
+        is_completed: 0,
         reminder_date: values.reminderDate,
         reminder_time: values.reminderTime,
       });
