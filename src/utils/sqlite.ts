@@ -79,7 +79,7 @@ class SQLITEhandler {
     addTask = async () => {
         try {
             const addedTask = await this.sqliteInstance?.runAsync('INSERT INTO task (title, description) VALUES (?, ?)', 'Title-1', 'my description');
-            console.log('addedTask ::: ', addedTask);
+            // console.log('addedTask ::: ', addedTask);
 
         } catch (error) {
             console.log('err in addTask ::: ', error);
@@ -90,7 +90,7 @@ class SQLITEhandler {
     getAllTasks = async (): Promise<any> => {
         try {
             const allTasks = await this.sqliteInstance?.getAllAsync('SELECT * FROM task')
-            console.log('allTasks ::: ', allTasks);
+            // console.log('allTasks ::: ', allTasks);
             return allTasks
         } catch (error) {
             console.log('err in getAllTasks ::: ', error);

@@ -41,6 +41,10 @@ const useNewsList = () => {
     [navigation]
   );
 
+  const addTodo = () => {
+    navigation.navigate(Screen.ADD_TODO);
+  }
+
   const handleSetting = useCallback(() => {
     navigation.navigate(Screen.SETTING);
   }, [navigation]);
@@ -57,6 +61,7 @@ const useNewsList = () => {
     handleNavigationNewsItem,
     handleSetting,
     styles: newsListStyles(color),
+    addTodo
   };
 };
 

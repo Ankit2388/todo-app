@@ -13,6 +13,7 @@ import {
   NewsDetailScreen,
   NewsListScreen,
   SettingScreen,
+  AddTodo
 } from '@src/screens';
 import { isForceUpdate } from '@src/store';
 
@@ -44,6 +45,7 @@ export const AppNavigation = () => {
             component={NewsDetailScreen}
           />
           <Stack.Screen name={Screen.SETTING} component={SettingScreen} />
+          <Stack.Screen name={Screen.ADD_TODO} component={AddTodo} />
           <Stack.Screen name={Screen.LOGIN} component={LoginScreen} />
           {__DEV__ && (
             <Stack.Screen

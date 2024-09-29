@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { LocalizationProvider, ThemeProvider } from './context';
 import { AppNavigation, navigationRef } from './navigation/AppNavigation';
 import store, { persistor } from './store';
@@ -18,7 +19,6 @@ export const MainApp = () => {
       const createTaskTableRes = await db.createTaskTable()
       console.log('A ::: ', a);
       console.log('createTaskTableRes :: ', createTaskTableRes);
-
     }
     init()
   }, [])
@@ -36,8 +36,10 @@ export const MainApp = () => {
              * @see https://github.com/rt2zz/redux-persist/blob/master/docs/PersistGate.md
              */}
             <PersistGate loading={null} persistor={persistor}>
-              <AppNavigation />
-              <IndicatorView isLoading={false} ref={loader} />
+              <SafeAreaView style={{ flex: 1 }}>
+                <AppNavigation />
+                <IndicatorView isLoading={false} ref={loader} />
+              </SafeAreaView>
             </PersistGate>
           </NavigationContainer>
         </LocalizationProvider>
