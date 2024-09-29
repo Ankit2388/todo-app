@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { IndicatorView } from '@app/blueprints';
 import { NavigationContainer } from '@react-navigation/native';
@@ -9,8 +9,20 @@ import { LocalizationProvider, ThemeProvider } from './context';
 import { AppNavigation, navigationRef } from './navigation/AppNavigation';
 import store, { persistor } from './store';
 import { loader } from './utils';
+import { db } from './utils/sqlite';
 
 export const MainApp = () => {
+  useEffect(() => {
+    const init = async () => {
+      const a = await db.initDb()
+      const createTaskTableRes = await db.createTaskTable()
+      console.log('A ::: ', a);
+      console.log('createTaskTableRes :: ', createTaskTableRes);
+
+    }
+    init()
+  }, [])
+
   return (
     <Provider store={store}>
       <ThemeProvider>
