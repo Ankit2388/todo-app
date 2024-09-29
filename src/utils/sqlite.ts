@@ -1,47 +1,10 @@
+import { AddTodo } from '@src/models';
 import * as SQLite from 'expo-sqlite';
 
-// export const db = SQLite
-
-// export const initDb = async() => {
-//     try {
-//         const initDbRes = await db.openDatabaseAsync('Todo')
-//         console.log('initDbRes :: ', initDbRes);
-//         // return initDbRes
-//     } catch (error) {
-//         console.log('Err in initDb ::: ', error);
-
-//     }
-// }
-
-// export const createTaskTable = async() => {
-//     try {
-//         const createTableRes = await db.execAsync
-//         console.log('createTableRes ::: ', createTableRes);
-
-//     } catch (error) {
-//         console.log('err in createTaskTable ::: ', error);
-
-//     }
-// }
 
 class SQLITEhandler {
     sqliteInstance: SQLite.SQLiteDatabase | undefined
-    // constructor(sqliteInstance?: SQLite.SQLiteDatabase){
-    //     this.sqliteInstance = sqliteInstance
-    // }
-    // static async createInstance() {
-    //     const data = await db.openDatabaseAsync('Todo')
-    //     return new SQLITEhandler(data);
-    //   }
 
-    // constructor(){
-    //     this.sqliteInstance = null
-    // }
-
-    // static async createInstance() {
-    //     const data: SQLite.SQLiteDatabase= await db.openDatabaseAsync('Todo')
-    //     return new SQLITEhandler(data);
-    //   }
     initDb = async () => {
         try {
             this.sqliteInstance = await SQLite.openDatabaseAsync('Todo')
@@ -76,10 +39,11 @@ class SQLITEhandler {
         }
     }
 
-    addTask = async () => {
+    addTask = async (todo: AddTodo) => {
+        const { description, title, is_completed, reminder_date, reminder_time } = todo
         try {
-            const addedTask = await this.sqliteInstance?.runAsync('INSERT INTO task (title, description) VALUES (?, ?)', 'Title-1', 'my description');
-            // console.log('addedTask ::: ', addedTask);
+            const addedTask = await this.sqliteInstance?.runAsync('INSERT INTO task (title, description, is_completed, reminder_date, reminder_time) VALUES (?, ?, ?, ?, ?)', `${title}`, `${description}`, `${is_completed}`, `${reminder_date}`, `${reminder_time}`);
+            console.log('addedTask ::: ', addedTask);
 
         } catch (error) {
             console.log('err in addTask ::: ', error);

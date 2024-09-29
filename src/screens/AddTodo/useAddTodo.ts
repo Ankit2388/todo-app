@@ -3,12 +3,12 @@ import * as yup from 'yup';
 import { AddTodoStyles } from './AddTodo.style';
 import { useCallback, useState } from 'react';
 import { logger } from '@src/utils';
+import { db } from '@src/utils/sqlite';
 
 const useAddTodo = () => {
   const { color, navigation } = useAppContext();
   const [showDatePicker, setShowDatePicker] = useState(false);
-  const [showTimePicker, setShowTimePicker] = useState(false)
-
+  const [showTimePicker, setShowTimePicker] = useState(false);
 
   const fieldValidation = yup.object().shape({
     title: yup.string().trim().required('Please enter title'),
@@ -19,29 +19,30 @@ const useAddTodo = () => {
     title: '',
     description: '',
     reminderDate: new Date(),
-    reminderPicker: new Date(),
+    reminderTime: new Date(),
   };
 
   const handleButtonSubmit = useCallback(
     async (values: typeof initialValues) => {
       logger('values: ', values);
+      await db.addTask({
+        title: values.title,
+        description: values.description,
+        is_completed: false,
+        reminder_date: values.reminderDate,
+        reminder_time: values.reminderTime,
+      });
     },
     []
   );
 
-  const showDatePickerHandler = useCallback(
-    () => {
-      setShowDatePicker((prevState) => !prevState)
-    },
-    [],
-  )
+  const showDatePickerHandler = useCallback(() => {
+    setShowDatePicker(prevState => !prevState);
+  }, []);
 
-  const showTimePickerHandler = useCallback(
-    () => {
-      setShowTimePicker((prevState) => !prevState)
-    },
-    [],
-  )
+  const showTimePickerHandler = useCallback(() => {
+    setShowTimePicker(prevState => !prevState);
+  }, []);
 
   return {
     navigation,
@@ -54,7 +55,7 @@ const useAddTodo = () => {
     setShowDatePicker,
     showTimePicker,
     showTimePickerHandler,
-    setShowTimePicker
+    setShowTimePicker,
   };
 };
 

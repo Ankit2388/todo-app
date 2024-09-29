@@ -75,11 +75,11 @@ const AddTodo = () => {
               showTimePicker && (
                 <DateTimePicker
                   testID="timePicker"
-                  value={values.reminderPicker}
+                  value={values.reminderTime}
                   mode={'time'}
                   minimumDate={new Date()}
                   onChange={(_event: any, selectedDate: any) => {
-                    setFieldValue('reminderPicker', selectedDate)
+                    setFieldValue('reminderTime', selectedDate)
                     setShowTimePicker(false)
                   }
                   }

@@ -26,6 +26,7 @@ module.exports = function (api) {
             '@src/services': './src/services',
             '@src/store': './src/store',
             '@src/utils': './src/utils',
+            '@src/models': './src/models'
           },
           extensions: ['.js', '.json'],
           root: ['./src'],
