@@ -17,9 +17,9 @@ const NewsListScreen = () => {
     )
 
 
-    // useEffect(() => {
-    //     getAllTodos()
-    // }, [])
+    useEffect(() => {
+        getAllTodos()
+    }, [])
 
     return (
         <View style={styles.container}>

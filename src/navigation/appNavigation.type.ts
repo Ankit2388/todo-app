@@ -11,7 +11,8 @@ export enum Screen {
   SETTING = 'SETTING',
   LOGIN = 'LOGIN',
   SIGNUP = 'SIGNUP',
-  ADD_TODO = 'ADD_TODO'
+  ADD_TODO = 'ADD_TODO',
+  TODO_LIST = 'TODO_LIST'
 }
 
 export type NavStackParams = {
@@ -23,6 +24,7 @@ export type NavStackParams = {
   [Screen.LOGIN]: undefined;
   [Screen.SIGNUP]: undefined;
   [Screen.ADD_TODO]: undefined
+  [Screen.TODO_LIST]: undefined
 };
 
 export type NewsDetailParams = {

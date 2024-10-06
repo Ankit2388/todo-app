@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector, TypedUseSelectorHook } from 'react-redux';
 import {
   FLUSH,
   PAUSE,
@@ -14,11 +14,12 @@ import {
 
 import { reduxStorage } from '@src/context';
 
-import { newsData, newsDataName, userData } from './reducers';
+import { newsData, newsDataName, userData, todoData } from './reducers';
 
 const rootReducer = combineReducers({
   newsData,
   userData,
+  todoData
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
@@ -50,6 +51,8 @@ export const persistor = persistStore(store);
 export type AppDispatch = typeof store.dispatch;
 
 export const useAppDispatch = () => useDispatch<typeof store.dispatch>();
+// export const useAppSelector = () => useSelector((state: RootState) => state);
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 export default store;
 
