@@ -23,7 +23,7 @@ class SQLITEhandler {
                 id INTEGER PRIMARY KEY NOT NULL,
                 title TEXT NOT NULL, 
                 description TEXT,
-                is_completed INTEGER DEFAULT 0,
+                is_completed INTEGER,
                 created_at TEXT DEFAULT (datetime('now', 'localtime')),
                 updated_at TEXT,
                 reminder_date TEXT,
@@ -54,8 +54,18 @@ class SQLITEhandler {
     getAllTasks = async (): Promise<any> => {
         try {
             const allTasks = await this.sqliteInstance?.getAllAsync('SELECT * FROM task')
-            // console.log('allTasks ::: ', allTasks);
+            console.log('allTasks ::: ', allTasks);
             return allTasks
+        } catch (error) {
+            console.log('err in getAllTasks ::: ', error);
+        }
+    }
+
+    deleteTable = async (tableName: string): Promise<any> => {
+        try {
+            const deletedTable = await this.sqliteInstance?.execAsync(`DROP TABLE IF EXISTS ${tableName};`)
+            console.log('deletedTable ::: ', deletedTable);
+
         } catch (error) {
             console.log('err in getAllTasks ::: ', error);
         }

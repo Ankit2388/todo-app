@@ -18,6 +18,7 @@ export const MainApp = () => {
       const a = await db.initDb()
       const createTaskTableRes = await db.createTaskTable()
       console.log('A ::: ', a);
+      // await db.deleteTable('task')
       console.log('createTaskTableRes :: ', createTaskTableRes);
     }
     init()

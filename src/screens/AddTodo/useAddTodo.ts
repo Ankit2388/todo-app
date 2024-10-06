@@ -29,8 +29,8 @@ const useAddTodo = () => {
         title: values.title,
         description: values.description,
         is_completed: 0,
-        reminder_date: values.reminderDate,
-        reminder_time: values.reminderTime,
+        reminder_date: new Date(values.reminderDate),
+        reminder_time: new Date(values.reminderTime),
       });
     },
     []
@@ -60,3 +60,6 @@ const useAddTodo = () => {
 };
 
 export default useAddTodo;
+
+
+
