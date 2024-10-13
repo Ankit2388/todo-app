@@ -15,9 +15,8 @@ import { db } from './utils/sqlite';
 export const MainApp = () => {
   useEffect(() => {
     const init = async () => {
-      const a = await db.initDb()
+      await db.initDb()
       const createTaskTableRes = await db.createTaskTable()
-      console.log('A ::: ', a);
       // await db.deleteTable('task')
       console.log('createTaskTableRes :: ', createTaskTableRes);
     }
