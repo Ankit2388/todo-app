@@ -57,6 +57,7 @@ export const Input = React.memo(
       rightIconContainerStyle,
       style,
       variant = 'filled',
+      containerStyle,
       ...rest
     } = props;
 
@@ -246,7 +247,7 @@ export const Input = React.memo(
     }, [activeAnimation.value]);
 
     return (
-      <View style={style}>
+      <View style={containerStyle}>
         <Animated.View
           style={[
             styles.inputContainer,

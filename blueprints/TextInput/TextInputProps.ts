@@ -46,7 +46,7 @@ export interface InputProps extends RNTextInputProps {
   /**
    * The style of the container view.
    */
-  // style?: StyleProp<ViewStyle>;
+  containerStyle?: StyleProp<ViewStyle>;
   /**
    * The style of the text input container view.
    */
