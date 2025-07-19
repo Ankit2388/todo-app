@@ -3,13 +3,14 @@
   "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {
-    "start": "expo start",
+    "start": "npx expo start --reset-cache",
     "reset-project": "node ./scripts/reset-project.js",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
     "lint": "expo lint",
-    "fix:lint": "yarn lint --fix && yarn typescript"
+    "fix:lint": "yarn lint --fix && yarn typescript",
+    "typescript": "tsc --noEmit"
   },
   "dependencies": {
     "@expo/vector-icons": "^14.1.0",
@@ -56,6 +57,7 @@
     "eslint-config-expo": "^9.2.0",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-no-inline-styles": "^1.0.5",
+    "eslint-plugin-prettier": "^5.5.3",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-native": "^5.0.0",
     "eslint-plugin-sort-destructure-keys": "^2.0.0",

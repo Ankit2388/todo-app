@@ -1,14 +1,10 @@
 import { createRef } from 'react';
 
-import NetInfo from '@react-native-community/netinfo';
 
+import { IndicatorRef } from '@/blueprints';
 import { scaledSize } from './dimensions';
-import { IndicatorRef } from '../../blueprints/Indicator/Indicator';
 
-export const isNetworkConnected = async () => {
-  const state = await NetInfo.refresh();
-  return state.isConnected || false;
-};
+
 
 export function isEmpty(obj: object) {
   return Object.keys(obj).length === 0;
@@ -16,7 +12,7 @@ export function isEmpty(obj: object) {
 
 export const logger = (...args: any) => {
   if (__DEV__) {
-    // eslint-disable-next-line no-console
+     
     console.log(...args);
   }
 };
