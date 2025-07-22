@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   StyleProp,
   StyleSheet,
@@ -20,6 +19,7 @@ import { Palette } from '@/theme';
 import { moderateScale, scaleHeight } from '@/utils';
 
 import { Text } from '../Text/Text';
+import React, { JSX } from 'react';
 
 const AnimatedButtonComponent =
   Animated.createAnimatedComponent(TouchableOpacity);
@@ -29,8 +29,10 @@ interface ExtraButtonProps {
   titleContainerStyle?: StyleProp<ViewStyle>;
   titleStyle?: StyleProp<TextStyle>;
   title?: React.ReactNode;
-  rightIcon?: JSX.Element;
-  leftIcon?: JSX.Element;
+  // rightIcon?: JSX.Element;
+  rightIcon?: any;
+  leftIcon?: any;
+  // leftIcon?: JSX.Element;
 }
 
 export type AnimatedButtonProps = Omit<

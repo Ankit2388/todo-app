@@ -1,7 +1,47 @@
+// {
+//   "eslint.options": {},
+//   "editor.codeActionsOnSave": {
+//     "source.fixAll": "explicit",
+//     "source.organizeImports": "explicit",
+//     "source.sortMembers": "explicit"
+//   },
+//   "eslint.validate": [
+//     "javascript",
+//     "typescript",
+//     "typescriptreact"
+//   ],
+//   "eslint.workingDirectories": [
+//     {
+//       "mode": "auto"
+//     }
+//   ],
+//   "eslint.experimental.useFlatConfig": true,
+//   "eslint.run": "onSave",
+//   "editor.defaultFormatter": "vscode.json-language-features",
+//   "editor.formatOnSave": true,
+//   "eslint.lintTask.enable": false,
+  
+// }
 {
+  "eslint.options": {},
+  "eslint.validate": [
+    "javascript",
+    "typescript",
+    "typescriptreact"
+  ],
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto"
+    }
+  ],
+  "eslint.useFlatConfig": true,
+  "eslint.run": "onSave",
+  "eslint.lintTask.enable": false,
+
   "editor.codeActionsOnSave": {
-    "source.fixAll": "explicit",
-    "source.organizeImports": "explicit",
-    "source.sortMembers": "explicit"
-  }
+   "source.fixAll": "explicit",
+  "source.organizeImports": "explicit"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",  // assuming Prettier is used
+  "editor.formatOnSave": true
 }

@@ -21,7 +21,7 @@ module.exports = defineConfig([
     languageOptions: {
       parser: tsParser,
       parserOptions: {
-        project: './tsconfig.json',
+        project: null,
         ecmaVersion: 2020,
         sourceType: 'module',
       },
@@ -79,9 +79,15 @@ module.exports = defineConfig([
       ],
       'sort-keys-fix/sort-keys-fix': ['error', 'asc', { caseSensitive: false, natural: true }],
     },
+    ignores: [
+      'node_modules/**',
+      '.expo/**',
+      'dist/**',
+      'eslint.config.js', // if you don't want to lint the config itself
+      'babel.config.js',
+      'metro.config.js'
+    ],
   },
 
-  {
-    ignores: ['dist/*'],
-  },
+  
 ]);
