@@ -1,5 +1,3 @@
-import { StorageKeys } from '@/constants';
-import { color, Palette, Theme } from '@/theme';
 import React, {
   createContext,
   useCallback,
@@ -9,6 +7,10 @@ import React, {
   useState,
 } from 'react';
 import { useColorScheme } from 'react-native';
+
+import { StorageKeys } from '@/constants';
+import { color, Palette, Theme } from '@/theme';
+
 import { storage } from './storage';
 
 

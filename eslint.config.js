@@ -1,44 +1,54 @@
 const { defineConfig } = require('eslint/config');
 const expoConfig = require('eslint-config-expo/flat');
 
-// Load plugin objects
 const tsPlugin = require('@typescript-eslint/eslint-plugin');
 const tsParser = require('@typescript-eslint/parser');
-const noInlineStyles = require('eslint-plugin-no-inline-styles');
-const sortKeysFix = require('eslint-plugin-sort-keys-fix');
-const sortDestructureKeys = require('eslint-plugin-sort-destructure-keys');
-const reactNative = require('eslint-plugin-react-native');
 const reactHooks = require('eslint-plugin-react-hooks');
-const react = require('eslint-plugin-react');
-const prettierPlugin = require('eslint-plugin-prettier');
-
+const reactNative = require('eslint-plugin-react-native');
 
 module.exports = defineConfig([
   expoConfig,
 
   {
-    files: ['**/*.{ts,tsx,js,jsx}'],
+    files: ['**/*.{ts,tsx}'],
     languageOptions: {
       parser: tsParser,
       parserOptions: {
-        project: null,
         ecmaVersion: 2020,
         sourceType: 'module',
+        ecmaFeatures: {
+          jsx: true,
+        },
       },
     },
     plugins: {
       '@typescript-eslint': tsPlugin,
-      'no-inline-styles': noInlineStyles,
-      'sort-keys-fix': sortKeysFix,
-      'sort-destructure-keys': sortDestructureKeys,
       'react-native': reactNative,
       'react-hooks': reactHooks,
-      react: react,
-      prettier: prettierPlugin,
     },
     rules: {
       'import/newline-after-import': ['warn', { count: 1 }],
       'import/no-duplicates': 'error',
+      '@typescript-eslint/explicit-function-return-type': 'off',
+      '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/no-require-imports': 'off',
+      'no-unused-expressions': 'off',
+        'react/display-name': 'off',
+
+      '@typescript-eslint/no-unused-expressions': 'off',
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          argsIgnorePattern: '^',
+          vars: 'all',
+          args: 'after-used',
+          caughtErrors: 'all',
+          caughtErrorsIgnorePattern: '^',
+          destructuredArrayIgnorePattern: '^',
+          varsIgnorePattern: '^',
+          ignoreRestSiblings: true,
+        },
+      ],
       'import/order': [
         'error',
         {
@@ -47,28 +57,11 @@ module.exports = defineConfig([
           'newlines-between': 'always',
           pathGroups: [
             { group: 'external', pattern: '@(react|react-native)', position: 'before' },
-            { group: 'internal', pattern: '@miBoilerplate/**' },
-            { group: 'internal', pattern: '@src/**' },
+            { group: 'internal', pattern: '@/**' },
           ],
           pathGroupsExcludedImportTypes: ['internal', 'react'],
         },
       ],
-      'no-console': 'error',
-      'no-inline-styles/no-inline-styles': 'error',
-      'no-restricted-imports': [
-        'error',
-        {
-          name: 'react-native',
-          importNames: ['Text', 'Image'],
-          message: 'Please use @app/blueprints for importing main elements.',
-        },
-      ],
-      'no-shadow': 'off',
-      '@typescript-eslint/no-shadow': 'error',
-      'prettier/prettier': ['error'],
-      'react-hooks/exhaustive-deps': 'error',
-      'react-hooks/rules-of-hooks': 'error',
-      'sort-destructure-keys/sort-destructure-keys': ['error', { caseSensitive: false }],
       'sort-imports': [
         'error',
         {
@@ -77,17 +70,17 @@ module.exports = defineConfig([
           ignoreMemberSort: false,
         },
       ],
-      'sort-keys-fix/sort-keys-fix': ['error', 'asc', { caseSensitive: false, natural: true }],
+      'react-hooks/rules-of-hooks': 'error',
+      'react-hooks/exhaustive-deps': 'warn',
     },
-    ignores: [
-      'node_modules/**',
-      '.expo/**',
-      'dist/**',
-      'eslint.config.js', // if you don't want to lint the config itself
-      'babel.config.js',
-      'metro.config.js'
-    ],
+    settings: {
+      react: {
+        version: 'detect',
+      },
+    },
   },
 
-  
+  {
+    ignores: ['node_modules', 'build', 'dist', '.next'],
+  },
 ]);

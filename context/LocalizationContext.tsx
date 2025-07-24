@@ -10,6 +10,7 @@ import React, {
 
 import { StorageKeys } from '@/constants';
 import i18n, { ContentLanguage } from '@/i18n';
+
 import { storage } from './storage';
 
 export type LocalizationAppContextType = {

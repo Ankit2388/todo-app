@@ -24,8 +24,8 @@ import Animated, {
 import { useColor } from '@/context';
 import { Palette } from '@/theme';
 
-import { Text } from '../Text/Text';
 import { InputProps } from './TextInputProps';
+import { Text } from '../Text/Text';
 
 const AnimatedTextInput = Animated.createAnimatedComponent(RNTextInput);
 

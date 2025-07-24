@@ -1,6 +1,7 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import { STORAGES_KEY } from '@/constants';
 import { logger } from '@/utils';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 export type dataStoreType = 'string' | 'boolean' | 'number' | 'object';
