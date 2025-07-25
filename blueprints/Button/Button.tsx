@@ -29,10 +29,10 @@ interface ExtraButtonProps {
   titleContainerStyle?: StyleProp<ViewStyle>;
   titleStyle?: StyleProp<TextStyle>;
   title?: React.ReactNode;
-  rightIcon?: JSX.Element;
+  rightIcon?: React.JSX.Element;
   // rightIcon?: any;
   // leftIcon?: any;
-  leftIcon?: JSX.Element;
+  leftIcon?: React.JSX.Element;
 }
 
 export type AnimatedButtonProps = Omit<
